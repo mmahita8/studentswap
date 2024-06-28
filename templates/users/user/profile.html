@@ -1,0 +1,71 @@
+ <!--This is the HTML for the product details page-->
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+
+    <link rel="stylesheet" href="{% static "css/profile.css" %}">
+{% endblock %}
+
+{% block content %}
+     <!-- User profile page that shows the details of each user -->
+    <ul class="messages">
+       {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+          {{ message }}
+        </li>
+       {% endfor %}
+    </ul>
+
+
+    <div class="profile">
+  {% if user.username == request.session.username %}
+       <div class="profileintro">
+{#           image taken from google images#}
+           <img id="hokie" src="{% static "images/hokie.png" %}">
+         <h3>Welcome to your profile, {{ user.username }}!</h3>
+       </div>
+    {% endif %}
+
+       <div class="profileuser">
+
+         <div class="profile-field">
+             <div class="fieldname" ><p>Username: </p></div>
+             <div class="secondfield"><p>{{ user.username}}</p></div>
+         </div>
+
+         <div class="profile-field">
+             <div class="fieldname"><p>First name: </p></div>
+             <div class="secondfield"><p>{{ user.first_name}}</p></div>
+         </div>
+
+         <div class="profile-field">
+             <div class="fieldname"><p>Last name: </p></div>
+             <div class="secondfield" ><p>{{ user.last_name}}</p></div>
+         </div>
+
+           <div class="profile-field">
+                <div class="fieldname"><p>Campus: </p></div>
+                <div class="secondfield"><p>{{ user.details.campus}}</p></div>
+         </div>
+
+         <div class="profile-field">
+                <div class="fieldname"><p>Email: </p></div>
+                <div class="secondfield"><p>{{ user.email}}</p></div>
+         </div>
+
+
+           <div class="profile-field">
+                 <div class="fieldname" ><p>Role: </p></div>
+               <div class="secondfield"><p>{{ user.details.role}}</p></div>
+               {% if user.username == request.session.username or request.session.role == "admin" %}
+               <button id="editbutton" onclick=window.location.href="{%  url "users:profile_edit" user.username %}">Edit profile</button>
+
+               {% endif %}
+           </div>
+       </div>
+
+    </div>
+
+
+{% endblock %}

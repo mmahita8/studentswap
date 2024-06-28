@@ -1,0 +1,22 @@
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+    <link rel="stylesheet" href="{% static "css/deleteconfirmation.css" %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="deletebox">
+    <div><h2>Are you sure you want to delete ?</h2></div>
+     <div>
+
+     <form method="POST">
+        {% csrf_token %}
+         <div class="deletefields" ><a href="{% url "delete" productid %}" style="background-color: indianred">Yes,delete</a></div>
+         <div class="deletefields"> <a href="{% url "buy" %}">Cancel</a></div>
+
+     </form>
+    </div>
+    </div>
+{% endblock %}

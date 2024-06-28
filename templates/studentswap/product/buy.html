@@ -1,0 +1,229 @@
+<!--This is the page the user comes to when he clicks the "buy" option in the navigation bar in the header.
+    This is the page listing items which uses buy.css. -->
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+    <link rel="stylesheet" href="{% static "css/buy.css" %}">
+     <link rel="stylesheet" href="{% static "css/product.css" %}">
+{% endblock %}
+
+{% block jslinks %}
+     <script src="{% static "js/jquery-3.7.1.min.js" %}"></script>
+    <script src="{% static "js/scripts.js" %}"></script>
+    <script src="{% static "js/searchresults.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+    <!--Item categories navigation bar-->
+    <div class="itemcategories">
+         <a class="categories" href="{% url "buyitem" %}?category=Furniture" ><b>Furniture</b></a>
+        <a class="categories" href="{% url "buyitem" %}?category=Electronic devices" ><b>Electronic devices</b></a>
+        <a class="categories" href="{% url "buyitem" %}?category=Books" ><b>Books</b></a>
+         <a class="categories" href="{% url "buyitem" %}?category=Kitchenware" ><b>Kitchenware</b></a>
+        <a class="categories" href="{% url "buyitem" %}?category=Home Accessories" ><b>Home accessories</b></a>
+         <a class="categories" href="{% url "buyitem" %}?category=Other" ><b>Miscellaneous</b></a>
+    </div>
+
+
+   <div id="hamburgermenu"><i class="fa-solid fa-bars"></i></div>
+
+<div class="maincontent">
+
+      <!--Filters section of the page- Subcategory,Price, Popularity, Sort by date-->
+  <div class="filters">
+
+   <form id="filterForm" method="GET" action="{%  url "filtered" %}">
+
+    <div class="filter" id="categories">
+        <p><b>Category</b></p>
+                <div class="option">
+
+            <input type="radio" id="living" name="category" value="Furniture" data-category="Furniture" data-ajax-url="{% url "get_subcategories" %}" >
+              <label for="category">Furniture</label>
+        </div>
+       <div class="option">
+        <input type="radio" id="dining" name="category" value="Electronic devices" data-category="Electronic devices" data-ajax-url="{% url "get_subcategories" %}">
+          <label for="category">Electronic devices</label>
+       </div>
+       <div class="option">
+        <input type="radio" id="bedroom" name="category" value="Books" data-category="Books" data-ajax-url="{% url "get_subcategories" %}">
+          <label for="category">Books</label>
+       </div>
+       <div class="option">
+        <input type="radio" id="homeoffice" name="category" value="Kitchenware" data-category="Kitchenware" data-ajax-url="{% url "get_subcategories" %}">
+          <label for="category">Kitchenware</label>
+       </div>
+       <div class="option">
+        <input type="radio" id="subother" name="category" value="Home Accessories" data-category="Home Accessories" data-ajax-url="{% url "get_subcategories" %}">
+          <label for="category">Home Accessories</label>
+       </div>
+        <div class="option">
+        <input type="radio" id="subother" name="category" value="Other" data-category="Miscellaneous" data-ajax-url="{% url "get_subcategories" %}">
+          <label for="category">Miscellaneous</label>
+       </div>
+</div>
+{#    </div>#}
+
+    <div class="filter" id="subcategories">
+        <p><b>Subcategory</b></p>
+                <div class="option">
+            <input type="radio" id="living" name="subcategory" value="">
+              <label for="subcategory">Living Room Furniture</label>
+        </div>
+       <div class="option">
+        <input type="radio" id="dining" name="subcategory" value="">
+          <label for="subcategory">Dining Room Furniture</label>
+       </div>
+       <div class="option">
+        <input type="radio" id="bedroom" name="subcategory" value="">
+          <label for="subcategory">Bedroom Furniture</label>
+       </div>
+       <div class="option">
+        <input type="radio" id="homeoffice" name="subcategory" value="">
+          <label for="subcategory">Home Office Furniture</label>
+       </div>
+       <div class="option">
+        <input type="radio" id="subother" name="subcategory" value="">
+          <label for="subcategory">Other</label>
+
+    </div>
+    </div>
+
+    <div class="filter">
+        <p><b>Price</b></p>
+        <div class="option">
+            <input type="radio" id="price1" name="price" value="0.00-25.00">
+              <label for="price1">Under $25</label>
+        </div>
+       <div class="option">
+        <input type="radio" id="price2" name="price" value="25.00-50.00">
+          <label for="price2">$25-$50</label>
+       </div>
+       <div class="option">
+        <input type="radio" id="price3" name="price" value="50.00-100.00">
+          <label for="price3">$50-$100</label>
+       </div>
+       <div class="option">
+        <input type="radio" id="price4" name="price" value="100.00-1000.0">
+          <label for="price4">Above $100</label>
+       </div>
+    </div>
+
+{#popularity will be implemented later#}
+{#    <div class="filter">#}
+{#        <p><b>Popularity</b></p>#}
+{#        <div class="option">#}
+{#            <input type="radio" id="pop1" name="popularity" value="Pop1">#}
+{#              <label for="pop1">Under 10</label>#}
+{#        </div>#}
+{#       <div class="option">#}
+{#        <input type="radio" id="pop2" name="popularity" value="Pop2">#}
+{#          <label for="pop2">10-50</label>#}
+{#       </div>#}
+{#       <div class="option">#}
+{#        <input type="radio" id="pop3" name="popularity" value="Pop3">#}
+{#          <label for="pop3">50-100</label>#}
+{#       </div>#}
+{#       <div class="option">#}
+{#        <input type="radio" id="pop4" name="popularity" value="Pop4">#}
+{#          <label for="pop4">Above 100</label>#}
+{#       </div>#}
+{#    </div>#}
+
+
+    <div class="filter">
+        <p><b>Sort by Date</b></p>
+        <div class="option">
+            <input type="radio" id="latest" name="date" value="Sort by Latest">
+              <label for="latest">Sort by Latest</label>
+        </div>
+       <div class="option">
+        <input type="radio" id="oldest" name="date" value="Sort by Oldest">
+          <label for="oldest">Sort by Oldest</label>
+       </div>
+      
+    </div>
+    <button class="filterbtn">FILTER</button>
+    
+   </form>
+ 
+   
+   </div>
+
+
+    <!--One big Itemscontainer that contains multiple items (like cards)-->
+
+    <!-- Images taken from the following sources-
+     These images are reused in other pages as well.
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2Fgallery%2Fbest-office-chairs%2F&psig=AOvVaw3xV1G9_3ApcUuRMabykbh3&ust=1694891414713000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCKDe09eorYEDFQAAAAAdAAAAABBL
+https://www.google.com/search?q=bedframe&tbm=isch&ved=2ahUKEwjJnpDTqa2BAxXYK2IAHRPbCw4Q2-cCegQIABAA&oq=bedframe&gs_lcp=CgNpbWcQAzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6BwgAEIoFEEM6BwgjEOoCECc6CAgAEIAEELEDOgoIABCKBRCxAxBDOgQIABADUMIIWMKvAmD_sgJoA3AAeACAAXaIAfkEkgEDOC4xmAEAoAEBqgELZ3dzLXdpei1pbWewAQrAAQE&sclient=img&ei=G60EZYmlC9jXiLMPk7avcA&authuser=0&bih=878&biw=1504&hl=en#vhid=a56PbCBi2XUc5M&vssid=3981:9gDH_xaTErE03M
+https://media.karousell.com/media/photos/products/2021/10/9/queen_size_mattress_1633766564_220ace55_progressive.jpg-->
+    <div class="outercontainer">
+{#    <div class="results"></div>#}
+
+  <div class="itemscontainer">
+     {#  if there are items to show#}
+      {% if productlist %}
+
+      {% for product in productlist %}
+            <div class="item">
+
+        <div class="imgclass">
+            <img src="{% static product.imageurl %}" alt="{{ product.imagealt }}">
+        </div>
+
+        <div class="info">
+         <div class="iteminfo">
+            <div class="rating">
+                <p class="itemtext">{{ product.itemname}}</p>
+
+                {#the heart icon for adding an item to wishlist is only available if the user is logged in#}
+                {% if  request.session.username %}
+{#                <a href="{% url "users:wishlist" product.id request.session.username  %}" onclick="addedalert()"><i class="fa-solid fa-heart itemtext"></i></a>#}
+                {% endif %}
+            </div>
+
+            <p class="itemtext">${{ product.price }}</p>
+           <div class="info-delete">
+            <a href="{% url "product_detail" product.id %}" class="itemtext">More info</a>
+             {% if request.session.username == "Admin" %}
+             <a href="{% url "deleteconfirmation" product.id %}" style="background-color: rgb(242, 106, 106); padding:0.4em"><i class="fa-solid fa-trash"></i></a>
+             {% endif %}
+         </div>
+         </div>
+
+        </div>
+
+    </div>
+
+      {% endfor %}
+      {% else %}
+     <p id="error_msg">Sorry, no items to show!</p>
+      {%  endif %}
+
+    </div>
+
+</div>
+
+  </div>
+
+    <script>
+     function addedalert()
+     {
+         alert("Item added to your wishlist!");
+     }
+    </script>
+
+   {% endblock %}

@@ -1,0 +1,11 @@
+
+.searchresults
+{
+    width: 80%;
+    margin: 0 auto;
+
+    position: absolute;
+    align-self: center;
+    top: 120px;
+}
+

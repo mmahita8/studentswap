@@ -1,0 +1,108 @@
+ <!--This is the HTML for the product details page-->
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+<link rel="stylesheet" href="{% static "css/product.css" %}">
+{#    <link rel="stylesheet" href="{% static "css/global.css" %}">#}
+{% endblock %}
+
+
+{% block jslinks %}
+     <script src="{% static "js/jquery-3.7.1.min.js" %}"></script>
+    <script src="{% static "js/scripts.js" %}"></script>
+    <script src="{% static "js/searchresults.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+     <!-- Product page that shows details of a specific product-->
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+    <div class="product">
+        <div class="productimage">
+            <img class="productimg" src="{% static item.imageurl %}" alt="{{item.imagealt}}">
+        </div>
+        <div class="productinfo">
+            <div class="maininfo">
+                <div>
+                <h2> {{ item.itemname }}</h2>
+                <h3>US ${{ item.price }}</h3>
+                <p class="secondaryinfo">Description : {{ item.description}} </p>
+                    <br>
+                </div>
+                <div >
+                    <p class="secondaryinfo">Posted by : <a style="background-color:white; font-weight: bold; !important;" href="{% url "users:profile_detail" item.user.username %}"> {{ item.user.username }}</a></p>
+                <p class="secondaryinfo">Date posted : {{ item.date_posted }}</p>
+                    </div>
+            </div>
+
+             <div class="secondaryinfo">
+                <p>Category : {{ item.category }}</p>
+                <p>Subcategory : {{ item.subcategory}}</p>
+             </div>
+            <div class="productbuttons">
+{#                <button id="addtowishlist" class="prodbtn">Add to Wishlist</button>#}
+                <button class="prodbtn" onclick=window.location.href="{% url "edit" item.id %}" >Edit item</button>
+                <button class="prodbtn">Buy</button>
+            </div>
+            
+
+                {% csrf_token %}
+                <p class="secondaryinfo">Comments</p>
+                <div class="pastcomments">
+
+                    {% for comment in comments %}
+                    <div class="individualcommentbox" id="comment-{{ comment.id }}">
+                        <p id="commentauthor"> @ <a href="{% url "users:profile_detail" comment.user.username %}">{{ comment.user.username }}</a>  •  {{ comment.datecommented }}</p>
+                            <p id="commentbyauthor">   {{ comment.comment }}</p>
+
+                        {% if request.session.username == comment.user.username or request.session.role == "admin" %}
+                            <div class="commentbuttonbox">
+                            <button class="commentbuttons edit-comment" id="editcommentbutton"  data-editcomment-id="{{ comment.id }}">Edit</button>
+                             <button class="commentbuttons delete-comment" id="deletecomment" data-deletecomment-url="{% url "deletecomment" comment.id %}" data-comment-id="{{ comment.id }}">Delete</button>
+
+                            </div>
+
+                             <form class="editcomment" id="editcomment-{{ comment.id }}"  style="display: none;">
+                      <input type="text" value="{{comment.comment}} " id="editcommentbox-{{ comment.id }}">
+                     <button class="commentbuttons savecomment" data-savecomment-url="{% url "savecomment" comment.id %}" data-savecomment-id="{{ comment.id }}">Save changes</button>
+                  </form>
+
+                        {% endif %}
+                   </div>
+
+                      {% empty %}
+                        <br>
+                        <p style="color:var(--primary-color4)">No comments yet</p>
+
+
+                      {% endfor %}
+
+
+                </div>
+                 {% if request.session.username %}
+                <form class="commentsection">
+                <input type="text" placeholder=" Enter your comment here " id="commentbox" >
+                <button class="commentbuttons" id="comment" data-comment-url="{% url "comment" item.id request.session.username %}"  data-productid="{{ item.id }}">Comment</button>
+
+                 </form>
+
+
+
+
+                 {% endif %}
+        </div>
+       
+    </div>
+
+
+{% endblock %}

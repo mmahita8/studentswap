@@ -1,0 +1,174 @@
+/* This is the css for product page */
+ 
+
+/* product information and image styling */
+.product
+{
+    display: flex;
+    width: 80%;
+    margin:0 auto;
+    gap:1em;
+    margin-top: 30px;
+    flex-direction: column;
+}
+
+.productimage
+{
+   align-self: center;
+}
+
+.productimg
+{    
+    width:30em;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid black;
+    
+}
+
+.productinfo
+{ 
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: var(--primary-color2);
+    display: flex;
+    flex-direction: column;
+   padding: 2em;
+   color: white;
+   gap: 2em;
+}
+
+.maininfo
+{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+   
+}
+.secondaryinfo
+{
+    font-size: 1.2rem;
+}
+
+
+
+/* styling the wishlist and buy buttons */
+.productbuttons
+{
+    display: flex;
+    gap: 1.5em;
+    max-width: 100%;
+    cursor: pointer;
+   
+}
+.prodbtn
+{
+    font-size: 1.2rem;
+     width: 14rem;
+    font-weight: bold;
+    background-color: var(--primary-color3);
+    color: var(--primary-color);
+    border: 2px solid white;
+    border-radius:1.8em;
+    padding: 0.6em;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+/* styling the comment section */
+.commentsection input, .editcomment input
+{
+    width:100%;
+    height:50px;
+    border-radius: 10px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.commentsection i
+{
+    position: absolute;
+    color: black;
+    bottom:-210px;
+    right: 230px;
+}
+
+.commentbuttonbox
+{
+    display: flex;
+    gap:0.3em;
+
+}
+
+.commentbuttonbox button
+{
+       background-color: var(--primary-color4);
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.commentbuttons
+{
+    display: inline-block;
+   border:3px solid white;
+   background-color: white;
+   
+    border-radius:1.8em;
+    padding: 0.6em;
+   margin-top: 0.5em;
+    cursor: pointer;
+}
+
+.individualcommentbox
+{
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top:10px;
+    padding:0.8em;
+
+}
+
+#commentauthor a{
+    color:var(--primary-color4)    !important;
+
+}
+
+#commentauthor a:hover{
+    color:white !important;
+}
+
+#commentauthor
+{
+    color: #bdbdbd;
+    font-size: 0.9rem;
+    margin-bottom:0.7em;
+}
+
+
+@media all and (max-width:700px)
+{
+    .productbuttons
+    {
+        flex-direction: column;
+    }
+
+    .maininfo
+{
+    font-size: 1.2rem;
+        flex-direction: column;
+}
+.secondaryinfo
+{
+    font-size: 1rem;
+}
+
+.prodbtn
+{
+    font-size: 1rem;
+    width: 10rem;
+}
+  
+}

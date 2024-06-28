@@ -1,0 +1,70 @@
+
+ <!--This is the HTML for the sell page-->
+
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+
+      <link rel="stylesheet" href="{% static "css/buy.css" %}">
+     <link rel="stylesheet" href="{% static "css/searchresults.css" %}">
+     <link rel="stylesheet" href="{% static "css/home-alt.css" %}">
+{% endblock %}
+
+
+{% block jslinks %}
+     <script src="{% static "js/jquery-3.7.1.min.js" %}"></script>
+{#    <script src="{% static "js/searchresults.js" %}"></script>#}
+{% endblock %}
+
+
+{% block content %}
+
+<!--   Results handled in searchresults.js-->
+     <div class="searchresults">
+     <br><br>
+         <div class="viewed"><h3>Search Results</h3></div>
+              <div class="itemscontainer">
+               {#  if there are items to show#}
+                {% if productlist %}
+
+                  {% for product in productlist %}
+                   <div class="item">
+
+                    <div class="imgclass">
+                     <img src="{% static product.imageurl %}" alt="{{ product.imagealt }}">
+                    </div>
+
+                    <div class="info">
+                     <div class="iteminfo">
+                        <div class="rating">
+                            <p class="itemtext">{{ product.itemname}}</p>
+{#                            <a href="{% url "wishlist" product.id %}"><i class="fa-solid fa-heart itemtext"></i></a>#}
+                        </div>
+
+                        <p class="itemtext">${{ product.price }}</p>
+                          <div class="info-delete">
+                        <a href="{% url "product_detail" product.id %}" class="itemtext">More info</a>
+
+                          </div>
+                     </div>
+
+                    </div>
+
+                    </div>
+                 {% endfor %}
+
+                    {% else %}
+                    <p>Sorry, no items to show for your search! Try again</p>
+                  {%  endif %}
+
+
+
+               </div>
+              </div>
+
+
+
+</div>
+
+ {% endblock %}

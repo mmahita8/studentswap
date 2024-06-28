@@ -1,0 +1,109 @@
+ <!--This is the HTML for the product details page-->
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+
+    <link rel="stylesheet" href="{% static "css/profile.css" %}">
+{% endblock %}
+
+
+{% block content %}
+     <!-- User profile page that shows the details of each user -->
+    <ul class="messages">
+       {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+          {{ message }}
+        </li>
+       {% endfor %}
+    </ul>
+
+
+    <div class="profile">
+  {% if user.username == request.session.username %}
+       <div class="profileintro">
+{#           image taken from google images#}
+           <img id="hokie" src="{% static "images/hokie.png" %}">
+         <h3>Edit your profile, {{ user.username }}</h3>
+       </div>
+{% endif %}
+        <form id="savechanges" method="POST" action="{%  url "users:saveprofilechanges" user.username %}">
+
+            {% csrf_token %}
+
+       <div class="profileuser">
+
+         <div class="profile-field">
+            <div class="fieldname" ><p>Username: </p></div>
+             <div class="secondfield"><p>{{ user.username}}<span style="color: rgb(128,128,128); font-size:0.8rem;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                 ** Username cannot be changed</span> </p> </div>
+
+         </div>
+
+         <div class="profile-field">
+             <div class="fieldname"><label for="firstname">First name:</label> </div>
+             <div class="secondfield"><input type="text" id="firstname" value="{{ user.first_name}}" name="firstname" required ></div>
+         </div>
+
+         <div class="profile-field">
+             <div class="fieldname"><label for="lastname">Last name:</label> </div>
+             <div class="secondfield" ><input type="text" id="lastname" value="{{ user.last_name}}" name="lastname" required></div>
+         </div>
+
+
+           <div class="profile-field">
+             <div class="register-field campus">
+                 <div ><label for="register-study">Which VT campus?</label></div>
+                 <div class="radiooptions">
+              <div>
+                  <input type="radio" id="campus" name="incampus" value="NVC" {% if user.details.campus == "NVC" %}checked{% endif %}>
+                  <label for="campus">NVC</label>
+              </div>
+                 <div >
+                  <input type="radio" id="campus" name="incampus" value="Blacksburg" {% if user.details.campus == "Blacksburg" %}checked{% endif %}>
+                    <label for="campus">Blacksburg</label>
+              </div>
+                     <div >
+                  <input type="radio" id="campus" name="incampus" value="Arlington" {% if user.details.campus == "Arlington" %}checked{% endif %}>
+                    <label for="campus">Arlington</label>
+              </div>
+                </div>
+                     </div>
+             </div>
+
+         <div class="profile-field">
+             <div class="fieldname"><label id="checkemail" for="email">Email: </label></div>
+                <div class="secondfield"><input type="email" value="{{ user.email}}" id="email" name="email" required></div>
+         </div>
+
+         <div class="profile-field">
+             <div class="fieldname"><label for="password">Enter your new Password: </label></div>
+                <div class="secondfield"><input name="password" id="password"></div>
+         </div>
+
+        <div class="profile-field">
+             {% if request.session.username == "admin" %}
+             <div class="fieldname"><label for="role">Role: </label></div>
+                <div class="secondfield"><input value="{{ user.details.role}}" id="role" name="role"></div>
+            {% endif %}
+         </div>
+
+           <div class="profile-field">
+               {% if user.username == request.session.username %}
+               <button id="editbutton" >Save changes</button>
+               {% elif request.session.role == "admin" %}
+                 <button id="editbutton">Save changes</button>
+               {% endif %}
+           </div>
+
+
+
+       </div>
+      </form>
+
+    </div>
+
+
+
+
+{% endblock %}

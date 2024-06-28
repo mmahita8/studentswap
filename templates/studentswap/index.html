@@ -1,0 +1,72 @@
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+<link rel="stylesheet" href="{% static "css/index.css" %}">
+{#    <link rel="stylesheet" href="{% static "css/global.css" %}">#}
+{% endblock %}
+
+
+{% block jslinks %}
+{#     <script src="{% static "js/jquery-3.7.1.min.js" %}"></script>#}
+{#    <script src="{% static "js/scripts.js" %}"></script>#}
+{% endblock %}
+
+{% block content %}
+  <!-- images taken from https://blush.design/
+        https://blush.design/collections/aJPO7jxl3W0C01VALXfW/hands/hands-phone/pK9um52QGfTfh10N?c=Skin_0%7Efcb7a0
+    https://blush.design/collections/aJPO7jxl3W0C01VALXfW/hands/vertical-scenes-exchange-colors/0zKHgHAg8H3Kn1Sx?c=Skin_0%7Efbd2ae-0.1%7E564634-0.2%7Efbd2ae -->
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+    <main>
+<div class="introduction">
+    <div class="intro">
+      <h3><b>Welcome to StudentSwap, Hokies! </b></h3><br>
+      <p>The one-stop marketplace to navigate the world of student essentials!</p>
+      <p id="slogan">Save, Sustain and Stress less.</p><br>
+      <a href="{%  url "home" %}" class="introbtn"><b>Sign Up or Login</b></a>
+    </div>
+</div>
+
+
+<div class="working-buyer">
+    <div class="intro">
+        <h3><b> As a BUYER </b></h3><br>
+        <p>Starting your academic adventure and looking for affordable items?</p><br>
+        <a href="{%  url "buy" %}" class="introbtn"><b>BUY NOW!</b></a>
+      </div>
+    <div class="introimg">
+        <img src="{% static "images/handsphone.png" %}" alt="hand holding phone">
+    </div>
+
+</div>
+<div class="working-seller">
+    <div class="introimg">
+        <img src="{% static "images/handsbuying.png" %}" alt="two hands exchanging money and item">
+    </div>
+    <div class="intro">
+        <h3><b> As a SELLER </b></h3><br>
+      <p>Have items that you're no longer using? <br>Turn your clutter into cash.</p><br>
+      <a href="{%  url "home" %}" class="introbtn" id="sell_home" onclick="asklogin()"><b>SELL NOW!</b></a>
+    </div>
+</div>
+
+{#if the user clicks on sell button without logging in, send an alert asking them to login #}
+<script>
+    function asklogin()
+    {
+        alert("Please login first!");
+    }
+</script>
+
+<br>
+    </main>
+{% endblock %}

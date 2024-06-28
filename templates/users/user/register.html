@@ -1,0 +1,93 @@
+
+ <!--This is the HTML for the sell page-->
+
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks  %}
+     <link rel="stylesheet" href="{% static "css/register.css" %}">
+{% endblock %}
+
+{% block jslinks %}
+    <script src="{% static "js/jquery-3.7.1.min.js" %}"></script>
+    <script src="{% static "js/usersscripts.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+
+      <!--Main section of the page that displays a form for the user to register-->
+
+     <div class="registration">
+       <div id="register-heading">
+         <h3>User registration</h3>
+       </div>
+
+       <div class="registeruser">
+
+         <form id="registerform" method="POST" action="{% url "users:register" %}">
+              {% csrf_token %}
+         <div class="register-field">
+             <div ><label for="register-username">Enter username</label></div>
+             <div ><input id="register-username" type="text" name="username" ><br></div>
+         </div>
+
+{##}
+         <div class="register-field">
+             <div ><label for="register-firstname">Enter firstname</label></div>
+             <div ><input id="register-firstname" type="text" name="firstname" ><br></div>
+         </div>
+
+
+         <div class="register-field">
+             <div ><label for="register-lastname">Enter lastname&nbsp</label></div>
+             <div ><input id="register-lastname" type="text" name="lastname" ><br></div>
+         </div>
+
+
+             <div class="register-field campus">
+                 <div ><label for="register-study">Which VT campus?</label></div>
+                 <div class="radiooptions">
+              <div>
+                  <input type="radio" id="campus" name="incampus" value="NVC">
+                  <label for="campus">NVC</label>
+              </div>
+                 <div >
+                  <input type="radio" id="campus" name="incampus" value="Blacksburg">
+                    <label for="campus">Blacksburg</label>
+              </div>
+                     <div >
+                  <input type="radio" id="campus" name="incampus" value="Arlington">
+                    <label for="campus">Arlington</label>
+              </div>
+
+                     </div>
+             </div>
+
+         <div class="register-field">
+             <div ><label for="register-email">Enter email &nbsp&nbsp&nbsp&nbsp&nbsp</label></div>
+             <div><input id="register-email" name="email" type="email" ><br></div>
+         </div>
+
+             <div class="register-field">
+                 <div class="divlabel"><label for="register-password" >Enter password</label></div>
+                 <div class="divinput"> <input type="password" name="password" id="register-password" ></div>
+
+             </div>
+
+             <div class="register-field">
+                 <button type="submit" class="registerbtn">REGISTER</button><br>
+
+             </div>
+
+
+
+
+         </form>
+
+     </div>
+
+     </div>
+
+
+
+{% endblock %}

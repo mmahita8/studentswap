@@ -1,0 +1,65 @@
+/* This is the CSS code for the footer*/
+
+footer
+{
+    display:flex;
+    justify-content: space-evenly;
+    padding:1em;
+    gap:1em;
+    align-self: center;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+
+    
+
+}
+
+/* footer links and icons style */
+
+.copyright, .links, .social-media-icons
+{
+    display: flex;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    align-items: center;
+    font-size: 1.3rem;
+  
+}
+
+.links 
+{
+    gap: 3em;
+}
+
+.copyright{
+  
+    gap:0.2em;
+    justify-content: center;
+    
+}
+
+
+.social-media-icons
+{
+    gap:1em;
+    justify-content: center;
+}
+
+/* making footer responsive */
+@media all and (max-width: 600px) {
+    footer {
+      flex-direction: column;
+    
+    }
+
+    .links
+    {
+        flex-direction: column;
+        gap:0.5em;
+    }
+
+    .copyright, .links, .social-media-icons
+    {
+        font-size: 0.9rem;
+    }
+  }

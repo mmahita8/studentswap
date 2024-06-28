@@ -1,0 +1,42 @@
+
+.deletebox{
+    margin:0 auto;
+    background-color: var(--primary-color2);
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+    padding:2em;
+    border-radius: 20px;
+}
+
+.deletefields
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap:1em;
+    border-radius: 20px;
+   padding:5px;
+}
+
+h2
+{
+    color:white ;
+}
+
+.deletefields a
+{
+    font-size: 1.5rem;
+    color: white;
+    background-color: var(--primary-color3);
+    border-radius: 20px;
+    margin-bottom:20px;
+    padding:1em;
+    margin:0 auto;
+    font-weight: bold;
+}
+
+.deletefields a:hover
+{
+    color: white !important;
+}

@@ -1,0 +1,163 @@
+/* This is the CSS code for the home page before the user logs in*/
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap:2em;
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 2em;
+}
+
+/* styling introductory content - styling 3 divs(introduction, buyer, seller) overall*/
+
+.introduction, .working-seller
+{
+   
+    background-color: var(--primary-color2);
+    border-radius: 1.3em;
+}
+
+.working-buyer
+{
+    background-color: var(--primary-color3);
+    border-radius: 1.3em;
+}
+
+.introduction, .working-buyer, .working-seller
+{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    text-align: center;
+    align-items: center;
+    padding:1em;
+}
+
+/* styling login, buy, sell buttons */
+.introbtn
+{
+    display: inline-block;
+   border:3px solid white;
+   background-color: rgb(255, 200, 21);
+    border-radius:1.8em;
+    padding: 0.6em;
+   margin-top: 0.5em;
+ 
+  
+   
+}
+
+.intro a{
+    color: var(--primary-color) !important;
+}
+
+.intro a:hover{
+    background-color: var(--primary-color3) !important;
+}
+
+.intro{
+    
+    display: block;
+    color: white;
+    font-family: 'DM Serif Display', serif, monospace;
+    letter-spacing: 1px;
+    max-width: 80%;
+    font-size: 1.8rem;
+    padding: 1.2em;
+    gap: 1em;
+
+    
+}
+
+#slogan
+{
+  
+     font-size: 2.5rem;
+     
+}
+
+.introimg
+{
+    width: 12em;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* adding responsiveness by changing width & reducing font size */
+@media all and (max-width:400px)
+{
+    .intro
+    {
+        font-size: 0.7rem;
+    }
+
+    .introbtn 
+    {
+        width: 100px;
+      
+       
+    }
+
+    .intro a
+    {
+        font-size: 1rem;
+      
+    }
+
+    #slogan{
+        font-size: 1.4rem;
+    }
+}
+
+@media all and (max-width:700px)
+{
+    .introduction, .working-buyer, .working-seller{
+        display: flex;
+        flex-direction: column;
+        gap:1em;
+        width: 100%;
+    }
+
+    .intro{
+        
+        font-size:1rem;
+    }
+
+    #slogan
+    {
+        font-size: 1.5rem;
+    }
+
+    .introimg
+    {
+        width: 8em;
+    }
+}
+
+@media all and (max-width:900px)
+{
+    .introduction, .working-buyer, .working-seller{
+        display: flex;
+        flex-direction: column;
+        gap:1em;
+        width: 100%;
+    }
+
+    .intro{
+        
+        font-size:1.2rem;
+    }
+
+    #slogan
+    {
+        font-size: 1.7rem;
+    }
+
+    .introimg
+    {
+        width: 9em;
+    }
+}
+

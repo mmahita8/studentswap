@@ -1,0 +1,126 @@
+/* This is the CSS code for the sell page*/
+
+.profile
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+  margin: 0 auto;
+
+}
+
+form{
+  margin:0 auto;
+}
+
+.profileintro
+{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #810325;
+  align-items: center;
+  padding: 20px;
+
+}
+
+#hokie{
+
+  width: 80px;
+  height: 80px;
+  margin:5px;
+}
+
+/* {{username}}'s Profile  */
+
+.profile h3
+{
+
+  color:white;
+  text-align:center;
+  font-family: var(--secondary-font-family);
+  font-size: 2rem;
+  padding: 0.5em;
+  letter-spacing: 2px;
+  max-width: 100%;
+}
+
+
+.profileuser
+{
+
+border-radius: 20px;
+max-width: 100%;
+margin: 0 auto;
+margin-bottom: 2em;
+padding:1em;
+}
+
+.fieldname label{
+  color: #484848;
+    font-size: 1.3rem;
+}
+
+.secondfield
+{
+    border-bottom:2px solid var(--primary-color2);
+}
+
+.secondfield input
+{
+  font-size: 1.8rem;
+  font-weight: bold;
+  color:#810325  ;
+  border: none;
+}
+
+.secondfield p
+{
+  font-size: 1.8rem;
+  font-weight: bold;
+  color:#810325  ;
+}
+
+.profile-field
+{
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  gap: 0.7em;
+  padding: 1.3em;
+  width: 30em;
+}
+
+/* edit button */
+#editbutton
+{
+  display: inline-block;
+  padding: 0.8em;
+  background-color: #810325;
+  font-family: var(--secondary-font-family);
+  font-weight: bold;
+  letter-spacing: 1.4px;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  border: none;
+  width: 170px;
+  max-width: 100%;
+  cursor:pointer;
+  color: white;
+  text-align: center;
+  margin:0 auto;
+
+}
+
+
+
+@media all and (max-width:850px)
+{
+  #heading h3
+  {
+    font-size: 1.4rem;
+  }
+
+}
+

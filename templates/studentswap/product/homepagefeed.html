@@ -1,0 +1,42 @@
+ <!--This is the HTML for the home page when the user is logged in-->
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+    <link rel="stylesheet" href="{% static "css/home-alt.css" %}">
+    <link rel="stylesheet" href="{% static "css/buy.css" %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="main">
+
+{#    container for recent activity of the user#}
+        <div class="listcontainer">
+         <h2 style="color: var(--primary-color2)">Here's whats happening around !</h2><br>
+            <div class="viewed">
+
+                <h3>Let's get you upto speed</h3></div>
+
+            <div class="list">
+                 <div class="activityhome">
+
+                    {% for action in actions %}
+
+                        <div> ► <a id="activitylinks" href="{% url "users:profile_detail" action.user.username %}"><span style="color:var(--primary-color3)">{{ action.user.username }}</span></a>
+                            {{ action.verb }} <a id="activitylinks" href="{{ action.target.get_absolute_url }}">
+                            <span style="color:var(--primary-color3)">{{ action.target }}</span></a> on {{ action.created }}</div>
+
+                     {% empty %}
+
+                    <div>No activity yet.</div>
+
+                         {% endfor %}
+
+                 </div>
+            </div>
+            </div>
+        </div>
+
+
+{% endblock %}

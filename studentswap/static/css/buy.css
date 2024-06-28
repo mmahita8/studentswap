@@ -1,0 +1,372 @@
+/* This is the CSS code for furniture.html page i.e page listing items.*/
+
+/* styling itemcategories which is navigation bar for categories */
+.itemcategories 
+{
+    display: flex;
+  
+    justify-content:center;
+    background-color: rgb(238, 238, 238);
+    border:1px solid rgb(202, 202, 202);
+   flex-wrap: wrap;
+   width: 100%;
+
+}
+
+.fa-heart:hover{
+    color: #9b0b0b;
+}
+
+.wishlisticon a:hover
+{
+    color: var(--primary-color4); !important
+}
+
+.itemcategories a{
+  font-size: 1rem;
+  padding:1em;
+}
+
+.outercontainer
+{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.results
+{
+    padding: 0.5em;
+    margin-left: 30px;
+}
+
+
+#hamburgermenu
+{
+  display: none;
+}
+/* items flex container containing items(like cards) and styling each item and it's information.
+This styling also applies to the current listings container on the home alternate page */
+.itemscontainer
+{
+    display: flex;
+    justify-content:center;
+    gap: 2em;
+    padding:2em;
+    flex-wrap: wrap;
+    min-width: 150px;
+    flex:80%;
+  
+}
+
+.item
+{
+
+    border:2px solid var(--primary-color2);
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    border-radius: 5px;
+   gap:0.7em;
+   max-width: 100%;
+   width:16.8em;
+   justify-content:flex-start;
+   
+
+}
+
+/* item image styling */
+.imgclass
+{
+   
+    text-align: center;
+    
+}
+
+.imgclass img
+{
+   
+    max-width: 100%;
+    width: 17em;
+    height: 15em;
+   
+  
+}
+
+/* item information styling */
+.info
+{   
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   max-width: 100%;
+   color: black;
+  
+}
+
+.iteminfo
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    
+}
+
+/* heart icon and product name */
+.rating
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    
+  
+   
+}
+.itemtext
+{
+    max-width: 100%; 
+    font-size: 1.3rem;
+    font-weight: bolder;
+     flex-wrap: wrap;
+} 
+
+
+.price, .more{
+    padding: 0.2em;
+}
+
+.price{
+    font-weight:bolder;
+    color: var(--primary-color2);
+}
+
+.authorname
+{
+    font-weight: normal;
+    font-size: 0.5rem;
+}
+
+
+.info-delete a
+{
+    background-color: var(--primary-color3);
+    padding: 0.3em;
+    border-radius: 13px;
+    border: none;
+    width:6em;
+    max-width: 100%;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: var(--default-font-family);
+  
+}
+
+.iteminfo a:hover
+{
+  color: white !important;
+}
+
+.maincontent
+{  
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    padding: 0.5em;
+   
+}
+
+/* filters sidenav styling */
+.filters
+{
+    background-color: var(--primary-color2);
+    /*flex:20%;*/
+    min-width:370px;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 1em;
+   
+}
+
+#filterForm
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    justify-content: center;
+    padding: 3em;
+
+}
+
+.filter{
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+
+}
+
+.filter p
+{
+    font-size: 1.5rem;
+    display: inline-block;
+    
+}
+
+.filterbtn
+{  
+  display: inline-block;
+    background-color:var(--primary-color4) ;
+    color:var(--primary-color);
+    padding: 0.5em;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+    width: 8em;
+    font-size: 1rem;
+    cursor:pointer;
+
+}
+
+.option input
+{
+    cursor:pointer;
+    /*font-size: 3rem;*/
+}
+label
+{
+    font-size: 1.1rem;
+}
+
+.underline
+{
+    text-decoration: underline;
+   text-decoration-thickness:3px;
+
+}
+
+#error_msg
+{
+    font-size: 1.6rem;
+    color:darkred;
+    font-weight: bold;
+}
+
+
+@media all and (max-width: 500px) {
+
+   
+  .itemtext,.fa-regular,.fa-heart {
+    font-size: 0.8rem;
+  }
+
+.imgclass img
+{
+  width:6em;
+  height: auto;
+}
+ 
+.item
+{
+  width:7em;
+}
+
+.maincontent
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.rating{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap:0.3em;
+}
+
+.filters
+{
+  display: none;
+}
+
+.iteminfo a
+{
+  font-size: 0.7rem;
+}
+
+.itemcategories
+{  
+  align-items: center;
+  justify-content: center;
+}
+
+#hamburgermenu
+{
+  display: block;
+  text-align: end;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+}
+
+
+@media all and (max-width: 600px) {
+
+   
+    .itemtext,.fa-regular,.fa-heart {
+      font-size: 0.9rem;
+    }
+
+  .imgclass img
+  {
+    width:7em;
+    height: auto;
+  }
+   
+  .item
+  {
+    width:9em;
+  }
+
+  .maincontent
+  {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rating{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:0.3em;
+  }
+
+  .filters
+  {
+    display: none;
+  }
+
+  #hamburgermenu
+  {
+    display: block;
+    text-align: end;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+  .iteminfo a
+  {
+    font-size: 0.8rem;
+  }
+ 
+
+  }
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+ <!--This is the HTML for the sell page-->
+ {% extends "studentswap/base.html" %}
+{% load static %}
+{% block content %}
+ 
+      <!--Main section of the page that displays a form for the user to fill to sell an item-->
+ 
+     <div class="sell">
+       <div id="heading">
+         <h3>What do you want to sell?</h3>
+       </div>
+       
+       <div class="sellitem">
+        
+         <form id="sellform">
+         <div class="field">
+             <div ><label>Title</label></div>
+             <div ><input type="text" placeholder="What are you selling?"><br></div>   
+         </div>
+ 
+         <div class="field">
+             <div class="divlabel"><label>Add a description</label></div>
+             <div class="divinput"><textarea style="height: 100px;" placeholder="Describe your item."></textarea><br></div>   
+         </div>
+         
+         <div class="field">
+             <div class="divlabel"><label >Add images</label></div>
+             <div class="divinput"> <button class="imagesbtn" onclick="">Upload images</button><br></div>
+             </div>
+ 
+             <!--Dropdown to choose categories and subcategories-->
+             <div class="field">
+                 <label >Choose a category:</label>
+                 <select name="subcategoryfilters" id="subcategoryfilters">
+                   <optgroup label="Furniture">
+                     <option value="livingroom">Living Room Furniture</option>
+                     <option value="diningroom">Dining Room Furniture</option>
+                     <option value="bedroomroom">Bedroom Furniture</option>
+                     <option value="officeroom">Home Office Furniture</option>
+                     <option value="others">Other</option>
+                   </optgroup>
+ 
+                   <optgroup label="Electronic devices">
+                     <option value="compacc">Computer & Accessories</option>
+                     <option value="mobacc">Mobile devices & Accessories</option>
+                     <option value="homeapp">Home Appliances</option>
+                     <option value="audiomusic">Audio & Music</option>
+                     <option value="others">Other</option>
+                   </optgroup>
+ 
+                   <optgroup label="Kitchenware">
+                     <option value="cookware">Cookware</option>
+                     <option value="cutlery">Cutlery</option>
+                     <option value="utensils">Kitchen Tools & Utensils</option>
+                     <option value="kitchenapp">Kitchen Appliances</option>
+                     <option value="others">Other</option>
+                   </optgroup>
+ 
+                   <optgroup label="Home Accessories">
+                     <option value="lighting">Lighting</option>
+                     <option value="bedding">Bedding & Linens</option>
+                     <option value="shelving">Shelving & Storage</option>
+                     <option value="bathroomacc">Bathroom Accessories</option>
+                     <option value="deskacc">Desk Accessories</option>
+                     <option value="kitchenacc">Kitchen Accessories</option>
+                     <option value="others">Other</option>
+                   </optgroup>
+ 
+                   <optgroup label="Books">
+                     <option value="textbooks">Textbooks</option>
+                     <option value="others">Other</option>
+                   </optgroup>
+                   
+                 </select>
+ 
+                
+             </div>
+ 
+             <div class="field">
+                 <div class="divlabel"><label >Price</label></div>
+                 <div class="divinput"> <input type="text" placeholder="Enter a price. Ex- $25.00">  
+             </div>
+             </div>
+           
+    
+           
+ 
+       
+ 
+ 
+         </form>
+ 
+     </div>
+ 
+     </div>
+   
+ 
+    
+{% endblock %}

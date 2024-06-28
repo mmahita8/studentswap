@@ -1,0 +1,106 @@
+ /* This CSS contains some default styles and global styles */
+*
+{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+/* Custom properties */
+
+:root{
+    --default-font-family:'Open Sans', sans-serif; 
+    --primary-color: #000000;
+    --primary-color2:#1F3933;
+    --primary-color3:#7aa38c;
+    --primary-color4:rgb(255, 200, 21);
+    --default-font-size:1.25rem;
+    --container-color:#111111;
+    --secondary-font-family: 'DM Serif Display', serif, monospace;
+
+
+    
+}
+
+
+body{
+    font-family: var(--default-font-family);
+    font-size: var(--default-font-size);
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5em;
+    min-height: 100vh;
+    /*position: relative;*/
+
+
+
+}
+
+/* images styling */
+img{
+    width: 100%;
+    height: auto;
+    display: block;
+
+}
+
+ul{
+    list-style: none;
+}
+
+/* LINKS */
+
+a,
+a:visited {
+  
+  color: var(--primary-color) !important;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: var(--primary-color3) !important ;
+   /*!important*/
+  text-decoration: none;
+}
+
+.container
+{
+    padding: 1rem;
+}
+
+/*messages customizations */
+ul.messages
+{
+
+    color: white;
+    text-align: center;
+
+}
+
+ul.messages li.success
+{
+    font-size: 1.5rem;
+    background-color: green;
+    font-weight: bold;
+}
+
+ul.messages li.info
+{
+    font-size: 1.5rem;
+    background-color: #11358d;
+    font-weight: bold;
+    padding:0.5em;
+}
+
+ul.messages li.warning
+{
+    font-size: 1.5rem;
+    background-color: #9b0b0b;
+    font-weight: bold;
+    padding:0.5em;
+
+}

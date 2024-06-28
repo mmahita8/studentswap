@@ -1,0 +1,80 @@
+ <!--This is the HTML for the home page when the user is logged in-->
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks %}
+      <link rel="stylesheet" href="{% static "css/wishlist.css" %}">
+      <link rel="stylesheet" href="{% static "css/buy.css" %}">
+    <link rel="stylesheet" href="{% static "css/home-alt.css" %}">
+{% endblock %}
+
+
+{% block jslinks %}
+     <script src="{% static "js/jquery-3.7.1.min.js" %}"></script>
+    <script src="{% static "js/searchresults.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+ {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+   <div class="main">
+    <div class="wishlistcontainer">
+        <div class="viewed"><h3>Here are the items saved by you!</h3></div>
+    <div class="itemscontainer" style="justify-content: flex-start;">
+
+        {% if productlist %}
+      {% for product in productlist %}
+            <div class="item">
+
+        <div class="imgclass">
+            <img src="{% static product.imageurl %}" alt="{{ product.imagealt }}">
+        </div>
+
+        <div class="info">
+         <div class="iteminfo">
+            <div class="rating">
+                <p class="itemtext">{{ product.itemname}}</p>
+            </div>
+
+            <p class="itemtext">${{ product.price }}</p>
+         <div class="info-delete">
+            <a href="{% url "product_detail" product.id %}" class="itemtext">More info</a>
+             <a href="{% url "users:wishlistdelete" product.id %}" style="background-color: rgb(242, 106, 106); padding:0.4em"><i class="fa-solid fa-trash"></i></a>
+
+         </div>
+         </div>
+
+        </div>
+
+     </div>
+
+      {% endfor %}
+      {% else %}
+     <p id="error_msg">Sorry, no items in your wishlist!</p>
+      {%  endif %}
+
+       
+       
+    </div>
+     
+    
+        
+    
+    
+        </div>
+ 
+
+   </div>
+   
+    
+ 
+ 
+ 
+{% endblock %}

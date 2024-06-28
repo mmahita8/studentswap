@@ -1,0 +1,177 @@
+/* This is the CSS code for the header*/
+
+header{
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 1.9em;
+    gap: 0.5em;
+
+    
+}
+
+/* logo styling */
+.logo
+{
+    display: flex;
+}
+
+.logo a{
+
+    /* Font for the logo taken from Google fonts- */
+    /* https://fonts.google.com/specimen/Indie+Flower?preview.text=$tudent$wap&preview.text_type=custom */
+
+    font-size: 2.4rem;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bolder;
+    color: var(--primary-color3) ;
+
+
+}
+
+/* logo icon styling */
+.logo img
+{
+    width: 42px;
+    height: 42px;
+    /* align-self: flex-start; */
+}
+
+.website-name
+{
+    color: var(--primary-color2);
+}
+
+
+.searcharea
+{
+    width:350px;
+    border-radius: 20px 0 0 20px;
+    border: none;
+    background-color: #c7c7c7;
+    padding: 0.5em;
+}
+
+.searchbutton
+{
+    background-color: var(--primary-color2);
+    color: white;
+    padding: 0.5em;
+    border-radius: 0 20px 20px 0;
+    border: none;
+    cursor: pointer;
+}
+
+#searchform
+{
+    /* background-color: var(--primary-color2); */
+    display: flex;
+    border-radius: 20px;
+    border: none;
+}
+
+::placeholder {
+  color: #181818;
+    font-size: 1rem;
+}
+
+
+/* navigation bar and links styling */
+.navigation
+{
+    display: flex;
+    align-items: center;
+}
+
+
+.navigation a 
+{  
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    padding:0.7em;
+    
+}
+
+/* making header responsive @ max-widths- 300px, 700px and 900px */
+
+
+@media all and (max-width: 300px) {
+    .navigation 
+    {
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+       
+   
+  }
+
+  .navigation a
+  {
+    padding: 0.2em;
+    font-size: 0.9rem;
+  }
+}
+
+
+.loginfields
+{
+    display:flex;
+    flex-direction: column;
+    gap:0.3em;
+}
+
+.loginfields input
+{
+    background-color: lightgray;
+    border: none;
+    border-radius: 20px;
+    height: 27px;
+    padding: 0.5em;
+    border: 1px solid var(--primary-color2);
+}
+
+.loginbutton
+{
+    background-color: var(--primary-color2) !important;
+    color: white;
+    /*text-align: center;*/
+    padding: 1em;
+    cursor: pointer;
+
+}
+
+
+@media all and (max-width: 860px) {
+    header {
+      flex-direction: column;
+      justify-content: center;
+      gap:0.5em;
+
+    }
+  }
+
+
+@media all and (max-width:1060px)
+{   .navigation a
+    {
+        font-size: 1.1rem;
+    }
+   
+    .logo a
+    {
+        font-size: 1.9rem;
+    }
+
+    .searcharea
+    {
+        width:200px;
+    }
+}
+
+
+
+
+   
+   

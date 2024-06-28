@@ -1,0 +1,116 @@
+
+ <!--This is the HTML for the sell page-->
+
+{% extends "studentswap/base.html" %}
+{% load static %}
+
+{% block csslinks  %}
+     <link rel="stylesheet" href="{% static "css/sell.css" %}">
+{% endblock %}
+
+{% block jslinks %}
+    <script src="{% static "js/jquery-3.7.1.min.js" %}"></script>
+    <script src="{% static "js/scripts.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+ 
+      <!--Main section of the page that displays a form for the user to fill to sell an item-->
+ 
+     <div class="sell">
+       <div id="heading">
+         <h3>What do you want to sell?</h3>
+       </div>
+       
+       <div class="sellitem">
+        
+         <form id="sellform" method="POST" action="{% url "sell" %}">
+              {% csrf_token %}
+         <div class="field">
+             <div ><label for="sellitemname">Title</label></div>
+             <div ><input id="sellitemname" type="text" placeholder="What are you selling?" name="itemname"><br></div>
+         </div>
+ 
+         <div class="field">
+             <div class="divlabel"><label for="desc">Add a description</label></div>
+             <div class="divinput"><textarea id="desc" style="height: 100px;" placeholder="Describe your item." name="desc"></textarea><br></div>
+         </div>
+         
+         <div class="field">
+             <div class="divlabel"><label >Add images</label></div>
+             <div class="divinput"> <button class="imagesbtn" onclick="">Upload images</button><br></div>
+         </div>
+ 
+             <!--Dropdown to choose categories and subcategories-->
+             <div class="field">
+                 <label>Choose a category:</label>
+                 <select name="subcategoryfilters" id="subcategoryfilters">
+                   <optgroup label="Furniture" >
+                     <option value="Furniture-Living Room Furniture" >Living Room Furniture</option>
+                     <option value="Furniture-Dining Room Furniture">Dining Room Furniture</option>
+                     <option value="Furniture-Bedroom Furniture">Bedroom Furniture</option>
+                     <option value="Furniture-Home Office Furniture">Home Office Furniture</option>
+                     <option value="Other-Miscellaneous">Other</option>
+                   </optgroup>
+ 
+                   <optgroup label="Electronic devices" >
+                     <option value="Electronic devices-Computer & Accessories">Computer & Accessories</option>
+                     <option value="Electronic devices-Mobile devices & Accessories">Mobile devices & Accessories</option>
+                     <option value="Electronic devices-Home Appliances">Home Appliances</option>
+                     <option value="Electronic devices-Audio & Music">Audio & Music</option>
+                     <option value="Other-Miscellaneous">Other</option>
+                   </optgroup>
+ 
+                   <optgroup label="Kitchenware" >
+                     <option value="Kitchenware-Cookware">Cookware</option>
+                     <option value="Kitchenware-Cutlery">Cutlery</option>
+                     <option value="Kitchenware-Kitchen Tools & Utensils">Kitchen Tools & Utensils</option>
+                     <option value="Kitchenware-Kitchen Appliances">Kitchen Appliances</option>
+                     <option value="Other-Miscellaneous">Other</option>
+                   </optgroup>
+ 
+                   <optgroup label="Home Accessories" >
+                     <option value="Home Accessories-Lighting">Lighting</option>
+                     <option value="Home Accessories-Bedding & Linens">Bedding & Linens</option>
+                     <option value="Home Accessories-Shelving & Storage">Shelving & Storage</option>
+                     <option value="Home Accessories-Bathroom Accessories">Bathroom Accessories</option>
+                     <option value="Home Accessories-Desk Accessories">Desk Accessories</option>
+                     <option value="Home Accessories-Kitchen Accessories">Kitchen Accessories</option>
+                     <option value="Other-Miscellaneous">Other</option>
+                   </optgroup>
+ 
+                   <optgroup label="Books" >
+                     <option value="Books-Textbooks">Textbooks</option>
+                     <option value="Other-Miscellaneous">Other</option>
+                   </optgroup>
+                   
+                 </select>
+
+                
+             </div>
+ 
+             <div class="field">
+                 <div class="divlabel"><label for="price" >Price</label></div>
+                 <div class="divinput"> <input type="text" placeholder="Enter a price. Ex- $25.00" name="price" id="price">
+             </div>
+             </div>
+
+             <input type="hidden" name="author" value="{{ request.session.username }}">
+
+             <div class="field" style="justify-content:center;">
+                 <button type="submit" class="sellbtn" >SELL ITEM</button><br>
+                 
+             </div>
+
+
+
+ 
+         </form>
+ 
+     </div>
+ 
+     </div>
+   
+ 
+    
+{% endblock %}
